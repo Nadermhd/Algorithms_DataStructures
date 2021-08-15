@@ -6,7 +6,7 @@ Graph:
 Weighted graph: where edges have certain weight value to indicate its importance
 
 '''
-
+from utils import time_it
 
 class Graph():
     def __init__(self, edges):
@@ -40,7 +40,8 @@ class Graph():
                     paths.append(p)
         
         return paths
-
+        
+    @time_it
     def shortest_path(self, start, end):
         # EITHER
         paths = self.get_paths(start, end)
@@ -72,10 +73,12 @@ if __name__ == '__main__':
                 ('Dubai', 'Newyork'),
                 ('Newyork', 'Tornoto') 
              ]
+    
     route_graph = Graph(routes)
     
     start = 'Mumbai'
     end = 'Newyork' 
+
     print(f"\nPath between {start} and {end}", route_graph.get_paths(start, end))
 
     print(f"\nSortest path between {start} and {end}", route_graph.shortest_path(start, end))
